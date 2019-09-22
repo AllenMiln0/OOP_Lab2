@@ -87,9 +87,9 @@ public:
 		rp_one = one.profit();
 		rp_two = two.profit();
 		rp_three = three.profit();
-		sum_one = rp_one * (percent_one/100);
-		sum_two = rp_two * (percent_two/100);
-		sum_three = rp_three * (percent_three/100);
+		sum_one = (rp_one * percent_one)/100.;
+		sum_two = (rp_two * percent_two)/100.;
+		sum_three = (rp_three * percent_three)/100.;
 
 		float sum = sum_one + sum_two + sum_three;
 		cout << "Реальная сумма прибыли со всех вагонов " << sum << endl << endl << endl;
