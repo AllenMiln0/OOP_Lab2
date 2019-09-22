@@ -6,6 +6,10 @@
 #include "pch.h"
 #include <iostream>
 #include <locale.h>
+#include <cstring>
+#include <string>
+#include <conio.h>
+#include <windows.h>
 
 
 using namespace std;
@@ -57,7 +61,7 @@ private:
 	int percent_two;
 	int percent_three;
 
-	char mas[10];
+	char mas[100];
 public:
 
 	/*train(){
@@ -73,6 +77,7 @@ public:
 
 	}*/
 	void display() {
+		cout << "Наименование маршрута: " << mas << endl;
 		one.display();
 		cout << "Заполненность первого вагона в процентах: " << percent_one << endl;
 		two.display();
@@ -130,6 +135,12 @@ public:
 	}
 
 	void read_train() {
+		cout << "Введите название маршрута" << endl;
+		fflush(stdin);
+		fflush(stdin);
+		fflush(stdin);
+		cin >> mas;
+		// cout << mas;
 		one.read();
 		two.read();
 		three.read();
