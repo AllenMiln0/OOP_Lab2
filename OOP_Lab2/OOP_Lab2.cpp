@@ -15,6 +15,14 @@ private:
 	int count_seat;
 	float price;
 public:
+	/*carriage() {
+		count_seat = 0;
+		price = 0;
+	}
+
+	~carriage() {
+
+	}*/
 	float profit() {
 		float pro;
 		pro = price * count_seat;
@@ -51,6 +59,19 @@ private:
 
 	char mas[10];
 public:
+
+	/*train(){
+	/*	one = carriage();
+		two = carriage();
+		three = carriage(); 
+		percent_one = 0;
+		percent_two = 0;
+		percent_three = 0;
+	}
+
+	~train() {
+
+	}*/
 	void display() {
 		one.display();
 		cout << "Заполненность первого вагона в процентах: " << percent_one << endl;
@@ -60,17 +81,18 @@ public:
 		cout << "Заполненность третьего вагона в процентах: " << percent_two << endl << endl << endl;
 	}
 
-	float real_profit() {
+	void real_profit() {
 		float rp_one, rp_two, rp_three;
+		float sum_one, sum_two, sum_three;
 		rp_one = one.profit();
 		rp_two = two.profit();
 		rp_three = three.profit();
-		rp_one *= (percent_one/100);
-		rp_two *= (percent_two/100);
-		rp_three *= (percent_three/100);
+		sum_one = rp_one * (percent_one/100);
+		sum_two = rp_two * (percent_two/100);
+		sum_three = rp_three * (percent_three/100);
 
-		float sum = rp_one + rp_two + rp_three;
-		cout << "Реальная сумма прибыли со всех вагонов" << sum << endl << endl << endl;
+		float sum = sum_one + sum_two + sum_three;
+		cout << "Реальная сумма прибыли со всех вагонов " << sum << endl << endl << endl;
 	}
 
 	// второй метод
@@ -94,6 +116,17 @@ public:
 			if (c_end == 2) cout << "Наименьшая ожидаемая сумма продаж: второй вагон." << endl << endl << endl;
 			else cout << "Наименьшая ожидаемая сумма продаж: третий вагон." << endl << endl << endl;
 		}
+	}
+
+	void profit() {
+		float one_p, two_p, three_p;
+		one_p = one.profit();
+		two_p = two.profit();
+		three_p = three.profit();
+
+		cout << "Ожидаемая сумма прибыли первого поезда: " << one_p << endl;
+		cout << "Ожидаемая сумма прибыли второго поезда: " << two_p << endl;
+		cout << "Ожидаемая сумма прибыли третьего поезда: " << three_p << endl << endl << endl;
 	}
 
 	void read_train() {
@@ -134,10 +167,7 @@ int main()
 			break;
 		case 2: moscow.display();
 			break;
-		case 3:/* moscow.one.profit();
-			moscow.two.profit();
-			moscow.three.profit();*/
-			cout << "Пока в разработке " << endl;
+		case 3: moscow.profit();
 			break;
 		case 4:	moscow.real_profit();
 			break;
