@@ -50,7 +50,7 @@ public:
 		cin >> price;
 	}
 };
-
+jjgjfjjgj
 class train {
 private:
 	carriage one;
@@ -136,8 +136,6 @@ public:
 
 	void read_train() {
 		cout << "Введите название маршрута" << endl;
-		fflush(stdin);
-		fflush(stdin);
 		fflush(stdin);
 		cin >> mas;
 		// cout << mas;
