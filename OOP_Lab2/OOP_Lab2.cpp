@@ -46,13 +46,18 @@ public:
 
 class train {
 private:
-	carriage one[3];
-
+	carriage *one;
 	int percent[3];
 
 	char mas[100];
 public:
+	train() {
+		one = new carriage[3];
+	}
 
+	~train() {
+		delete[] one;
+	}
 
 	void display() {
 		cout << "Наименование маршрута: " << mas << endl;
