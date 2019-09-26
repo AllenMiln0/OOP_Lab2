@@ -19,14 +19,7 @@ private:
 	int count_seat;
 	float price;
 public:
-	/*carriage() {
-		count_seat = 0;
-		price = 0;
-	}
-
-	~carriage() {
-
-	}*/
+	
 	float profit() {
 		float pro;
 		pro = price * count_seat;
@@ -50,88 +43,64 @@ public:
 		cin >> price;
 	}
 };
-jjgjfjjgj
+
 class train {
 private:
-	carriage one;
-	carriage two;
-	carriage three;
+	carriage one[3];
 
-	int percent_one;
-	int percent_two;
-	int percent_three;
+	int percent[3];
 
 	char mas[100];
 public:
 
-	/*train(){
-	/*	one = carriage();
-		two = carriage();
-		three = carriage(); 
-		percent_one = 0;
-		percent_two = 0;
-		percent_three = 0;
-	}
 
-	~train() {
-
-	}*/
 	void display() {
 		cout << "Наименование маршрута: " << mas << endl;
-		one.display();
-		cout << "Заполненность первого вагона в процентах: " << percent_one << endl;
-		two.display();
-		cout << "Заполненность второго вагона в процентах: " << percent_two << endl;
-		three.display();
-		cout << "Заполненность третьего вагона в процентах: " << percent_two << endl << endl << endl;
+		for (int i = 0; i < 3; i++) {
+			one[i].display();
+			cout << "Заполненность вагона в процентах: " << percent[i] << endl;
+		}
 	}
 
-	void real_profit() {
-		float rp_one, rp_two, rp_three;
-		float sum_one, sum_two, sum_three;
-		rp_one = one.profit();
-		rp_two = two.profit();
-		rp_three = three.profit();
-		sum_one = (rp_one * percent_one)/100.;
-		sum_two = (rp_two * percent_two)/100.;
-		sum_three = (rp_three * percent_three)/100.;
-
-		float sum = sum_one + sum_two + sum_three;
+	void real_profit(){
+		float rp_one[3];
+		float sum_one[3], sum;
+		sum = 0;
+		for (int i = 0; i < 3; i++) {
+			rp_one[i] = one[i].profit();
+			sum_one[i] = (rp_one[i] * percent[i]) / 100.;
+			sum += sum_one[i];
+		}
+		
 		cout << "Реальная сумма прибыли со всех вагонов " << sum << endl << endl << endl;
 	}
 
 	// второй метод
 	void min_profit() {
-		float c1, c2, c3;
-		int c_end;
-		c1 = one.profit();
-		c2 = two.profit();
-		c3 = three.profit();
-		if (c1 < c2) {
-			if (c3 < c1) c_end = 3;
-			else c_end = 1;
-		}
-		else {
-			if (c3 > c2) c_end = 2;
-			else c_end = 3;
+		float c1[3], c_end;
+		for (int i = 0; i < 3; i++) {
+			c1[i] = one[i].profit();
 		}
 
-		if (c_end == 1) cout << "Наименьшая ожидаемая сумма продаж: первый вагон." << endl << endl << endl;
-		else {
-			if (c_end == 2) cout << "Наименьшая ожидаемая сумма продаж: второй вагон." << endl << endl << endl;
-			else cout << "Наименьшая ожидаемая сумма продаж: третий вагон." << endl << endl << endl;
+		c_end = c1[0];
+		for (int i = 0; i < 3; i++) {
+			if (c1[i] < c_end) c_end = c1[i];
 		}
+		int t;
+		for (int i = 0; i < 3; i++) {
+			if (c1[i] == c_end) t = i;
+		}
+
+
+		cout << "Наименьшая ожидаемая сумма продаж: " << t << " вагон." << endl << endl << endl;
 	}
 
 	void profit() {
-		float one_p, two_p, three_p;
-		one_p = one.profit();
-		two_p = two.profit();
-		three_p = three.profit();
-
-		cout << "Ожидаемая сумма прибыли первого поезда: " << one_p << endl;
-		cout << "Ожидаемая сумма прибыли второго поезда: " << two_p << endl;
-		cout << "Ожидаемая сумма прибыли третьего поезда: " << three_p << endl << endl << endl;
+		float one_p[3];
+		for (int i = 0; i < 3; i++) {
+			one_p[i] = one[i].profit();
+			cout << "Ожидаемая сумма прибыли" << i << " поезда: " << one_p[i] << endl;
+		}
 	}
 
 	void read_train() {
@@ -139,16 +108,12 @@ public:
 		fflush(stdin);
 		cin >> mas;
 		// cout << mas;
-		one.read();
-		two.read();
-		three.read();
 
-		cout << "Введите процент заполнения первого вагона (0..100):" << endl;
-		cin >> percent_one;
-		cout << "Введите процент заполнения второго вагона (0..100):" << endl;
-		cin >> percent_two;
-		cout << "Введите процент заполнения третьего вагона (0..100):" << endl;
-		cin >> percent_three;
+		for (int i = 0; i < 3; i++) {
+			one[i].read();
+			cout << "Введите процент заполнения " << i << " вагона (0..100):" << endl;
+			cin >> percent[i];
+		}
 	}
 };
 
